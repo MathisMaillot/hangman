@@ -1,4 +1,4 @@
-package hangman
+package github.com/MathisMaillot/hangman
 
 func CheckError(e error) { // fonction pour arrêter le programme si erreur
 	if e != nil {
