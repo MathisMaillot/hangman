@@ -1,4 +1,4 @@
-package github.com/MathisMaillot/hangman
+package hangman
 
 import (
 	"encoding/json"
