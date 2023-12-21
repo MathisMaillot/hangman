@@ -14,7 +14,7 @@ func Displayletter(inputLetter string, currentHangman HangManData, isLetterThere
 			for _, v := range currentHangman.Word {
 				word += v
 			}
-			DisplyAscii(word, alphabetAscii, height)
+			DisplyAscii(word,alphabetAscii, height )
 		} else {
 			for _, v := range currentHangman.Word {
 				fmt.Printf(v + " ")
@@ -36,3 +36,4 @@ func containsValueIndex(s string, value string) []int {
 	}
 	return listIndex
 }
+
