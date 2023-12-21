@@ -1,3 +1,3 @@
-module github.com/MathisMaillot/hangman
+module hangman
 
 go 1.21.1
