@@ -8,6 +8,7 @@ import (
 func DisplayRandomletter(currentHangman HangManData) string {
 	var randomIndex int = rand.Intn(len(currentHangman.ToFind) - 1)
 	// currentHangman.Word[randomIndex] = string(currentHangman.ToFind[randomIndex])
+	currentHangman.Word = ""
 	for i, v := range currentHangman.ToFind {
 		if  i == randomIndex {
 			currentHangman.Word += string(v) + " "
