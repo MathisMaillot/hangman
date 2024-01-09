@@ -9,7 +9,7 @@ func Displayletter(inputLetter string, currentHangman HangManData, isLetterThere
 		for _, v := range containsValueIndex(currentHangman.ToFind, inputLetter) {
 			for i := 0; i < len(currentHangman.Word); i++ {
 				if  i == v {
-					currentHangman.Word += string(v) + " "
+					currentHangman.Word += string(currentHangman.ToFind[v]) + " "
 					
 				} else {
 					currentHangman.Word += "_ "
@@ -23,10 +23,7 @@ func Displayletter(inputLetter string, currentHangman HangManData, isLetterThere
 		// 	}
 		// 	DisplyAscii(word,alphabetAscii, height )
 		// } else {
-			for _, v := range currentHangman.Word {
-				fmt.Printf(string(v) + " ")
-			}
-			fmt.Println()
+		fmt.Println(currentHangman.Word)
 		// }
 	} else {
 		fmt.Printf(currentHangman.HangmanPositions[9-currentHangman.Attempts])
