@@ -27,7 +27,7 @@ func game(currentHangman hangman.HangManData, isAscii bool, alphabetAscii map[st
 			break
 		}
 		currentHangman.Attempts, isLetterThere = hangman.LetterPresence(input, hangman.HangManData(currentHangman), &listLetterAlreadyIn)
-		currentHangman.Word = hangman.Displayletter(input, hangman.HangManData(currentHangman), isLetterThere, isAscii, alphabetAscii, height)
+		currentHangman.Word = hangman.Displayletter(input, hangman.HangManData(currentHangman), isLetterThere)
 	}
 }
 
