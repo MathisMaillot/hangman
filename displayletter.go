@@ -4,10 +4,17 @@ import (
 	"fmt"
 )
 
-func Displayletter(inputLetter string, currentHangman HangManData, isLetterThere bool) []string {
+func Displayletter(inputLetter string, currentHangman HangManData, isLetterThere bool) string {
 	if isLetterThere {
 		for _, v := range containsValueIndex(currentHangman.ToFind, inputLetter) {
-			currentHangman.Word[v] = inputLetter
+			for i := 0; i < len(currentHangman.Word); i++ {
+				if  i == v {
+					currentHangman.Word += string(v) + " "
+					
+				} else {
+					currentHangman.Word += "_ "
+				}
+			}
 		}
 		// if isAscii {
 		// 	var word string
@@ -17,7 +24,7 @@ func Displayletter(inputLetter string, currentHangman HangManData, isLetterThere
 		// 	DisplyAscii(word,alphabetAscii, height )
 		// } else {
 			for _, v := range currentHangman.Word {
-				fmt.Printf(v + " ")
+				fmt.Printf(string(v) + " ")
 			}
 			fmt.Println()
 		// }

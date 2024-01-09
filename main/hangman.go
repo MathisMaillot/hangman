@@ -2,16 +2,28 @@ package main
 
 import (
 	"fmt"
+	"os"
+
 	"github.com/MathisMaillot/hangman"
 )
 
 func main() {
-	alphabetAscii, height := hangman.GetAlphabetAscii()
-	currentHangman, isAscii := hangman.StartGame(alphabetAscii, height)
-	game(currentHangman, isAscii, alphabetAscii, height)
+	// alphabetAscii, height := hangman.GetAlphabetAscii()
+	// currentHangman, isAscii := hangman.StartGame(alphabetAscii, height)
+	wordlist := hangman.Wordlist(os.Args[1])
+	currentHangman := hangman.HangManData{
+		Word: "", 
+		ToFind: hangman.Randomword(wordlist),
+		Attempts: 10, HangmanPositions: hangman.GetHangman("hangman.txt")}
+	for i := 0; i < len(currentHangman.ToFind); i++ {
+		currentHangman.Word += "_"
+	}
+	currentHangman.Word = hangman.DisplayRandomletter(currentHangman)
+	fmt.Println("Good Luck, you have", currentHangman.Attempts, "attempts.")
+	game(currentHangman)
 }
 
-func game(currentHangman hangman.HangManData, isAscii bool, alphabetAscii map[string]string, height int) {
+func game(currentHangman hangman.HangManData) {
 	var listLetterAlreadyIn string
 	var isLetterThere bool
 
@@ -36,7 +48,7 @@ func endgame(currentHangman hangman.HangManData) bool {
 	var gameIsFinished bool
 
 	for _, v := range currentHangman.Word {
-		word += string(v[0])
+		word += string(string(v)[0])
 	}
 
 	if currentHangman.Attempts == 0 {
