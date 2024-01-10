@@ -38,7 +38,8 @@ func Game(currentHangman HangManData) {
 	var listLetterAlreadyIn string
 	var isLetterThere bool
 	fmt.Println()
-	for !Endgame(HangManData(currentHangman)) {
+	gameIsFinished, _ := Endgame(HangManData(currentHangman))
+	for !gameIsFinished {
 		var input string
 
 		fmt.Println("Choose : ")
