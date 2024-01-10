@@ -28,7 +28,8 @@ func Game(currentHangman HangManData) {
 	currentHangman = HangManData{
 		Word: []string{}, 
 		ToFind: Randomword(wordlist),
-		Attempts: 10, HangmanPositions: GetHangman("hangman.txt")}	
+		Attempts: 10, 
+		HangmanPositions: GetHangman("hangman.txt")}	
 	for i := 0; i < len(currentHangman.ToFind); i++ {
 		currentHangman.Word = append(currentHangman.Word, "_")
 	}

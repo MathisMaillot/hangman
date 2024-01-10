@@ -38,7 +38,6 @@ func LetterPresence(inputLetter string, currentHangman HangManData, letterlist *
 		}
 	}
 }
-
 func containsValue(s string, value string) bool {
 	for j := 0; j < len(s); j++ {
 		if value == string(s[j]) {
@@ -47,7 +46,6 @@ func containsValue(s string, value string) bool {
 	}
 	return false
 }
-
 func listLetterAlreadyIn(inputletter string, s *string) string {
 	for i := 0; i < len(inputletter); i++ {
 		if !containsValue(*s, string(inputletter[i])) {
