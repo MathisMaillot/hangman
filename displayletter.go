@@ -15,7 +15,7 @@ func Displayletter(inputLetter string, currentHangman HangManData, isLetterThere
 		}
 		fmt.Println()
 	} else {
-		fmt.Printf(currentHangman.HangmanPositions[9-currentHangman.Attempts])
+		fmt.Printf(currentHangman.HangmanPositions[10-currentHangman.Attempts])
 	}
 	return currentHangman.Word
 }
