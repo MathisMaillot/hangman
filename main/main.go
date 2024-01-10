@@ -39,6 +39,7 @@ func game(currentHangman hangman.HangManData) {
 			break
 		}
 		currentHangman.Attempts, isLetterThere = hangman.LetterPresence(input, currentHangman, &listLetterAlreadyIn)
+		fmt.Println(listLetterAlreadyIn)
 		currentHangman.Word = hangman.Displayletter(input, currentHangman, isLetterThere)
 	}
 }
