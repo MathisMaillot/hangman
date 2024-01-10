@@ -9,31 +9,31 @@ type HangManData struct {
 	HangmanPositions [10]string // It can be the array where the positions parsed in "hangman.txt" are stored
 }
 
-func LetterPresence(inputLetter string, currentHangman HangManData, letterlist *string) (int, bool) {
+func LetterPresence(inputLetter string, currentHangman HangManData, letterlist *string) (int, bool, string) {
 	if len(inputLetter) != 1 {
 		if string(inputLetter) == string(currentHangman.ToFind) {
 			fmt.Println("Good job, the word was :" + currentHangman.ToFind)
-			return currentHangman.Attempts, true
+			return currentHangman.Attempts, true , *letterlist
 		} else {
 			currentHangman.Attempts = max(currentHangman.Attempts-2, 0)
 			*letterlist = listLetterAlreadyIn(inputLetter, letterlist)
 			fmt.Println("Wrong guess, ", currentHangman.Attempts, " attempts remaining")
-			return currentHangman.Attempts, false
+			return currentHangman.Attempts, false, *letterlist
 		}
 	} else {
 		if containsValue(*letterlist, inputLetter) {
 			fmt.Println(inputLetter + " has already been tried")
-			return currentHangman.Attempts, false
+			return currentHangman.Attempts, false, *letterlist
 		} else {
 			if containsValue(currentHangman.ToFind, inputLetter) {
 				fmt.Println("Good guess :)")
 				*letterlist = listLetterAlreadyIn(inputLetter, letterlist)
-				return currentHangman.Attempts, true
+				return currentHangman.Attempts, true, *letterlist
 			} else {
 				currentHangman.Attempts = currentHangman.Attempts - 1
 				*letterlist = listLetterAlreadyIn(inputLetter, letterlist)
 				fmt.Println("Not present in the word :(, ", currentHangman.Attempts, " attempts remaining")
-				return currentHangman.Attempts, false
+				return currentHangman.Attempts, false, *letterlist
 			}
 		}
 	}
