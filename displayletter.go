@@ -4,27 +4,16 @@ import (
 	"fmt"
 )
 
-func Displayletter(inputLetter string, currentHangman HangManData, isLetterThere bool) string {
+func Displayletter(inputLetter string, currentHangman HangManData, isLetterThere bool) []string {
 	if isLetterThere {
 		for _, v := range containsValueIndex(currentHangman.ToFind, inputLetter) {
-			for i := 0; i < len(currentHangman.Word); i++ {
-				if  i == v {
-					currentHangman.Word += string(currentHangman.ToFind[v]) + " "
-					
-				} else {
-					currentHangman.Word += "_ "
-				}
-			}
+			currentHangman.Word[v] = inputLetter
 		}
-		// if isAscii {
-		// 	var word string
-		// 	for _, v := range currentHangman.Word {
-		// 		word += v
-		// 	}
-		// 	DisplyAscii(word,alphabetAscii, height )
-		// } else {
-		fmt.Println(currentHangman.Word)
-		// }
+
+		for _, v := range currentHangman.Word {
+			fmt.Printf(v + " ")
+		}
+		fmt.Println()
 	} else {
 		fmt.Printf(currentHangman.HangmanPositions[9-currentHangman.Attempts])
 	}
@@ -40,4 +29,3 @@ func containsValueIndex(s string, value string) []int {
 	}
 	return listIndex
 }
-
